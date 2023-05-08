@@ -1,8 +1,8 @@
 #include <stdlib.h>
 
 typedef struct List_ {
-    int head;
-    struct List_ *tail;
+	int head;
+	struct List_ *tail;
 } List;
 
 List *cons(int, List *);
@@ -16,11 +16,12 @@ List *rmap(List *, int (*)(int));
 List *
 cons(int head, List *tail)
 {
-    List *l = malloc(sizeof(List));
-    if (l == NULL) return NULL;
-    l->head = head;
-    l->tail = tail;
-    return l;
+	List *l = malloc(sizeof(List));
+	if (l == NULL)
+		return NULL;
+	l->head = head;
+	l->tail = tail;
+	return l;
 }
 
 void
@@ -55,7 +56,8 @@ map(List *l, int (*fn)(int))
 void
 rforeach(List *l, void (*fn)(int))
 {
-	if (l == NULL) return;
+	if (l == NULL)
+		return;
 	fn(l->head);
 	rforeach(l->tail, fn);
 }
@@ -63,6 +65,7 @@ rforeach(List *l, void (*fn)(int))
 List *
 rmap(List *l, int (*fn)(int))
 {
-	if (l == NULL) return NULL;
+	if (l == NULL)
+		return NULL;
 	return cons(fn(l->head), rmap(l->tail, fn));
 }
