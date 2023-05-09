@@ -24,6 +24,18 @@ decons(List *l)
 }
 
 void
+reverse(List **l)
+{
+	List *prev, *curr, *next;
+	for (prev = NULL, curr = *l, next = NULL; curr != NULL; curr = next) {
+		next = curr->tail;
+		curr->tail = prev;
+		prev = curr;
+	}
+	*l = prev;
+}
+
+void
 foreach(List *l, void (*fn)(int))
 {
 	List *curr;
@@ -39,6 +51,7 @@ map(List *l, int (*fn)(int))
 	for (curr = l, acc = NULL; curr != NULL; curr = curr->tail) {
 		acc = cons(fn(curr->head), acc);
 	}
+	reverse(&acc);
 	return acc;
 }
 

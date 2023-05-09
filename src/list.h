@@ -8,6 +8,7 @@ typedef struct List_ {
 List *cons(int, List *);
 void decons(List *);
 
+void reverse(List **);
 void foreach(List *, void (*)(int));
 List *map(List *, int (*)(int));
 void rforeach(List *, void (*)(int));
