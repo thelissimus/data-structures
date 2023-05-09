@@ -1,6 +1,11 @@
-SRC = $(wildcard *.c)
+SRC = $(wildcard src/*.c)
+
+all: options
+
+options:
+	@echo "SRC = $(SRC)"
 
 fmt:
 	clang-format -i $(SRC)
 
-.PHONY: fmt
+.PHONY: all options fmt
