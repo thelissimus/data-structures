@@ -91,3 +91,39 @@ length(const List *l)
 	}
 	return acc;
 }
+
+bool
+elem(const List *l, int a)
+{
+	const List *curr;
+	for (curr = l; curr != NULL; curr = curr->tail) {
+		if (curr->head == a)
+			return true;
+	}
+	return false;
+}
+
+ssize_t
+find_index(const List *l, int a)
+{
+	ssize_t i;
+	const List *curr;
+	for (i = 0, curr = l; curr != NULL; i++, curr = curr->tail) {
+		if (curr->head == a)
+			return i;
+	}
+	return -1;
+}
+
+bool
+get_at(const List *l, size_t i, int *res)
+{
+	const List *curr;
+	for (curr = l; curr != NULL; curr = curr->tail, i--) {
+		if (i == 0) {
+			*res = curr->head;
+			return true;
+		}
+	}
+	return false;
+}

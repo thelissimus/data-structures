@@ -1,6 +1,7 @@
 #pragma once
 
-#include <stddef.h>
+#include <stdbool.h>
+#include <sys/types.h>
 
 typedef struct List_ {
 	int head;
@@ -25,3 +26,6 @@ int fold(const List *, int (*)(int, int), int);
 
 /* Basic functions: immutable */
 size_t length(const List *);
+bool elem(const List *, int);
+ssize_t find_index(const List *, int);
+bool get_at(const List *, size_t, int *);
