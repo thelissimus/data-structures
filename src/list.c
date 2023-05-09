@@ -36,38 +36,57 @@ reverse(List **l)
 }
 
 void
-foreach(List *l, void (*fn)(int))
+foreach(List *l, void (*f)(int))
 {
 	List *curr;
 	for (curr = l; curr != NULL; curr = curr->tail) {
-		fn(curr->head);
+		f(curr->head);
 	}
 }
 
 List *
-map(List *l, int (*fn)(int))
+map(List *l, int (*f)(int))
 {
 	List *curr, *acc;
 	for (curr = l, acc = NULL; curr != NULL; curr = curr->tail) {
-		acc = cons(fn(curr->head), acc);
+		acc = cons(f(curr->head), acc);
 	}
 	reverse(&acc);
 	return acc;
 }
 
 void
-rforeach(List *l, void (*fn)(int))
+rforeach(List *l, void (*f)(int))
 {
 	if (l == NULL)
 		return;
-	fn(l->head);
-	rforeach(l->tail, fn);
+	f(l->head);
+	rforeach(l->tail, f);
 }
 
 List *
-rmap(List *l, int (*fn)(int))
+rmap(List *l, int (*f)(int))
 {
 	if (l == NULL)
 		return NULL;
-	return cons(fn(l->head), rmap(l->tail, fn));
+	return cons(f(l->head), rmap(l->tail, f));
+}
+
+int
+fold(List *l, int (*f)(int, int), int z)
+{
+	if (l == NULL)
+		return z;
+	return f(l->head, fold(l->tail, f, z));
+}
+
+size_t
+length(List *l)
+{
+	size_t acc = 0;
+	List *curr;
+	for (curr = l; curr != NULL; curr = curr->tail) {
+		acc++;
+	}
+	return acc;
 }
