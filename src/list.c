@@ -36,18 +36,19 @@ reverse(List **l)
 }
 
 void
-foreach(List *l, void (*f)(int))
+foreach(const List *l, void (*f)(int))
 {
-	List *curr;
+	const List *curr;
 	for (curr = l; curr != NULL; curr = curr->tail) {
 		f(curr->head);
 	}
 }
 
 List *
-map(List *l, int (*f)(int))
+map(const List *l, int (*f)(int))
 {
-	List *curr, *acc;
+	List *acc;
+	const List *curr;
 	for (curr = l, acc = NULL; curr != NULL; curr = curr->tail) {
 		acc = cons(f(curr->head), acc);
 	}
@@ -56,7 +57,7 @@ map(List *l, int (*f)(int))
 }
 
 void
-rforeach(List *l, void (*f)(int))
+rforeach(const List *l, void (*f)(int))
 {
 	if (l == NULL)
 		return;
@@ -65,7 +66,7 @@ rforeach(List *l, void (*f)(int))
 }
 
 List *
-rmap(List *l, int (*f)(int))
+rmap(const List *l, int (*f)(int))
 {
 	if (l == NULL)
 		return NULL;
@@ -73,7 +74,7 @@ rmap(List *l, int (*f)(int))
 }
 
 int
-fold(List *l, int (*f)(int, int), int z)
+fold(const List *l, int (*f)(int, int), int z)
 {
 	if (l == NULL)
 		return z;
@@ -81,10 +82,10 @@ fold(List *l, int (*f)(int, int), int z)
 }
 
 size_t
-length(List *l)
+length(const List *l)
 {
 	size_t acc = 0;
-	List *curr;
+	const List *curr;
 	for (curr = l; curr != NULL; curr = curr->tail) {
 		acc++;
 	}

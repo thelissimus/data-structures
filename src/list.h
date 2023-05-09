@@ -15,13 +15,13 @@ void decons(List *);
 void reverse(List **);
 
 /* Transformations: immutable */
-void foreach(List *, void (*)(int));
-List *map(List *, int (*)(int));
+void foreach(const List *, void (*)(int));
+List *map(const List *, int (*)(int));
 
 /* Transformations: immutable & recursive */
-void rforeach(List *, void (*)(int));
-List *rmap(List *, int (*)(int));
-int fold(List *, int (*)(int, int), int);
+void rforeach(const List *, void (*)(int));
+List *rmap(const List *, int (*)(int));
+int fold(const List *, int (*)(int, int), int);
 
 /* Basic functions: immutable */
-size_t length(List *);
+size_t length(const List *);
