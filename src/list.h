@@ -1,7 +1,8 @@
 #pragma once
 
-#include <stdbool.h>
 #include <sys/types.h>
+#include <stdbool.h>
+#include <stddef.h>
 
 typedef struct List_ {
 	int head;
@@ -14,17 +15,23 @@ void decons(List *);
 
 /* Transformations: mutable */
 void reverse(List **);
+bool insert_after(List *, size_t, int);
+bool delete_after(List *, size_t);
 
 /* Transformations: immutable */
-void foreach(const List *, void (*)(int));
 List *map(const List *, int (*)(int));
 
 /* Transformations: immutable & recursive */
-void rforeach(const List *, void (*)(int));
 List *rmap(const List *, int (*)(int));
 int fold(const List *, int (*)(int, int), int);
 
-/* Basic functions: immutable */
+/* Traversing: immutable */
+void foreach(const List *, void (*)(int));
+
+/* Traversing: immutable & recursive */
+void rforeach(const List *, void (*)(int));
+
+/* Accessors: immutable */
 size_t length(const List *);
 bool elem(const List *, int);
 ssize_t find_index(const List *, int);

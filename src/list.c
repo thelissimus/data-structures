@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdlib.h>
 
 #include "list.h"
@@ -33,6 +34,36 @@ reverse(List **l)
 		prev = curr;
 	}
 	*l = prev;
+}
+
+bool
+insert_after(List *l, size_t i, int a)
+{
+	List *curr;
+	for (curr = l; curr != NULL; curr = curr->tail, i--) {
+		if (i == 0) {
+			curr->tail = cons(a, curr->tail);
+			return true;
+		}
+	}
+	return false;
+}
+
+bool
+delete_after(List *l, size_t i)
+{
+	if (l == NULL)
+		return false;
+
+	List *curr;
+	for (curr = l; curr->tail != NULL; curr = curr->tail, i--) {
+		if (i == 0) {
+			free(curr->tail);
+			curr->tail = curr->tail->tail;
+			return true;
+		}
+	}
+	return false;
 }
 
 void
