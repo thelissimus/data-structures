@@ -1,0 +1,14 @@
+name: data-structures
+language: Haskell2010
+
+library:
+  source-dirs: src
+  dependencies:
+    - base
+
+executable:
+  main: Main.hs
+  source-dirs: app
+  dependencies:
+    - base
+    - data-structures
