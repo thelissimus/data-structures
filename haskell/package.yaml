@@ -5,10 +5,3 @@ library:
   source-dirs: src
   dependencies:
     - base
-
-executable:
-  main: Main.hs
-  source-dirs: app
-  dependencies:
-    - base
-    - data-structures
