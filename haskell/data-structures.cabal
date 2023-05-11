@@ -10,7 +10,7 @@ build-type:     Simple
 
 library
   exposed-modules:
-      Lib
+      List
   other-modules:
       Paths_data_structures
   hs-source-dirs:
