@@ -5,7 +5,12 @@ module List where
 data List a
   = Cons a (List a)
   | Nil
-  deriving (Show)
+
+instance Show a => Show (List a) where
+  show :: Show a => List a -> String
+  show Nil = "[]"
+  show (Cons h Nil) = show h ++ "]"
+  show (Cons h t) = "[" ++ show h ++ "," ++ show t
 
 instance Semigroup (List a) where
   (<>) :: List a -> List a -> List a
