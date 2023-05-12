@@ -105,11 +105,11 @@ rmap(const List *l, int (*f)(int))
 }
 
 int
-fold(const List *l, int (*f)(int, int), int z)
+foldr(const List *l, int (*f)(int, int), int z)
 {
 	if (l == NULL)
 		return z;
-	return f(l->head, fold(l->tail, f, z));
+	return f(l->head, foldr(l->tail, f, z));
 }
 
 size_t

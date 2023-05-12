@@ -23,7 +23,7 @@ List *map(const List *, int (*)(int));
 
 /* Transformations: immutable & recursive */
 List *rmap(const List *, int (*)(int));
-int fold(const List *, int (*)(int, int), int);
+int foldr(const List *, int (*)(int, int), int);
 
 /* Traversing: immutable */
 void foreach(const List *, void (*)(int));
