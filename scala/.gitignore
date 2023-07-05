@@ -1,0 +1,26 @@
+# Editor
+.idea/
+.vscode/
+
+# SBT
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
+.bsp/
+.bloop/
+*.class
+*.log
+.env
+.envrc
+.sdkmanrc
+local.conf
+
+# Metals
+.metals/
+metals.sbt
