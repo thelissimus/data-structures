@@ -4,6 +4,7 @@ Implementations of common data structures
 Available in:
 * C
 * Haskell
+* Scala 3
 
 Data structures:
 * Linked List
