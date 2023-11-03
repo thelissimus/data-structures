@@ -6,4 +6,7 @@ lazy val root = project
     scalaVersion      := "3.3.0",
     semanticdbEnabled := true,
     semanticdbVersion := scalafixSemanticdb.revision,
+    libraryDependencies ++= Seq(
+      "org.typelevel" %% "cats-core" % "2.10.0",
+    ),
   )
